@@ -1,4 +1,5 @@
 import { getLogger, Logger } from 'log4js';
+require('dotenv').config();
 
 export class LoggerService {
   public static getLogger(): Logger {
