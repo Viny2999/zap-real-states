@@ -5,9 +5,9 @@ export class CacheService {
   public readonly cache = new Cache();
   private readonly logger = LoggerService.getLogger();
 
-  public set(key: string, obj: any, time: number = 0): void {
+  public set(key: string, obj: any): void {
     try {
-      this.cache.set(key, obj, time);
+      this.cache.set(key, obj, process.env.CACHE_TIME);
       this.logger.debug('CacheService :: setCache :: cacheSeted');
     } catch (error) {
       this.logger.error('CacheService :: setCache :: Error ', error);
