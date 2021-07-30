@@ -14,9 +14,11 @@
     "axios": "0.21.1",
     "dotenv": "10.0.0",
     "express": "4.17.1",
+    "joi": "17.4.1",
     "log4js": "6.3.0",
     "moment": "2.29.1",
     "node-cache": "5.1.2",
+    "retry-axios": "^2.4.0",
     "ts-node": "10.1.0"
   },
   "devDependencies": {
