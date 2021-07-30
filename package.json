@@ -9,11 +9,9 @@
     "lint": "eslint . --ext .ts && echo '✔  Your .js files look good.'"
   },
   "dependencies": {
-    "@types/cors": "2.8.12",
     "@types/express": "4.17.1",
     "@types/node": "16.4.7",
     "axios": "0.21.1",
-    "cors": "2.8.5",
     "dotenv": "10.0.0",
     "express": "4.17.1",
     "log4js": "6.3.0",
