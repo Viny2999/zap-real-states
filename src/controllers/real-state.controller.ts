@@ -1,7 +1,7 @@
+import { Validate } from '../middlewares/validation';
 import { RealStateService } from '../services';
 import { Router } from 'express';
 import Joi from 'joi';
-import { Validate } from '../middlewares/validation';
 
 const router = Router();
 const realStateService = new RealStateService();

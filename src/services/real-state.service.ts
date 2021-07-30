@@ -1,5 +1,5 @@
-import { Request, Response } from 'express';
 import { AxiosService, CacheService, LoggerService } from '.';
+import { Request, Response } from 'express';
 
 const axiosService = new AxiosService();
 const cacheService = new CacheService();
