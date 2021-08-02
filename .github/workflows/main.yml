@@ -9,14 +9,15 @@ on:
   workflow_dispatch:
 
 jobs:
+  test:
+    steps:
+      - name: Test Stage
+        run: npm run test
   deploy:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-
-      # - name: Test Stage
-      #   run: npm run test
 
       - name: Login to Heroku Container registry
         env: 
