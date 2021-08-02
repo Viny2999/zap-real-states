@@ -10,7 +10,7 @@ const app: express.Application = express();
 const port = process.env.PORT || 3000;
 const host = process.env.HOST || 'localhost';
 
-app.use('/', HealthCheckController);
+app.use('/health', HealthCheckController);
 app.use('/realState', RealStateController);
 
 app.use((req: Request, res: Response) => res.status(404).send(NOT_FOUND));
