@@ -17,10 +17,18 @@ export class CacheService {
   public get(key: string): any {
     try {
       const value = this.cache.get(key);
-      this.logger.debug(`CacheService :: getCache :: ${JSON.stringify(value, null, 2)}`);
+      this.logger.debug(`CacheService :: getCache :: cacheGeted`);
       return value;
     } catch (error) {
       this.logger.error('CacheService :: getCache :: Error ', error);
     }
+  }
+
+  public checkKey(key: string) {
+    return this.cache.has(key);
+  }
+
+  public deleteKey(key: string) {
+    return this.cache.del(key);
   }
 }
