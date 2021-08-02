@@ -14,11 +14,11 @@ export class RealStateService {
     const path = req.path;
 
     try {
-      const data = await realStateRepository.getAll(path, page, limit);
+      const realStateResponse = await realStateRepository.getAll(path, page, limit);
 
       logger.debug('RealStateService :: getZap :: Real State Zap Listed');
 
-      return res.send(data);
+      return res.send(realStateResponse);
     } catch (error) {
       logger.error('RealStateService :: getZap :: Error : ', error);
       return res.status(500).send(SERVER_ERROR);
@@ -31,10 +31,10 @@ export class RealStateService {
     const path = req.path;
 
     try {
-      const data = await realStateRepository.getAll(path, page, limit);
+      const realStateResponse = await realStateRepository.getAll(path, page, limit);
       logger.debug('RealStateService :: getVivaReal :: Real State Viva Real Listed');
 
-      return res.send(data);
+      return res.send(realStateResponse);
     } catch (error) {
       logger.error('RealStateService :: getVivaReal :: Error : ', error.message);
       return res.status(500).send(SERVER_ERROR);
