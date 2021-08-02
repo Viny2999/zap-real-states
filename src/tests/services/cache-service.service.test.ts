@@ -1,9 +1,9 @@
-import { CacheService } from '../services';
+import { CacheService } from '../../services';
 import assert from 'assert';
 
 const cacheService = new CacheService();
 
-describe('Test Cache Service', () => {
+describe('Cache Service Test', () => {
   const key = 'test';
   const value = 123;
 
