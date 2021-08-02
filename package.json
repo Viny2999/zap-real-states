@@ -6,7 +6,7 @@
     "start": "ts-node src/app.ts",
     "dev": "NODE_ENV=dev nodemon --watch src -e ts . --exec 'npm start -s'",
     "test": "LOG_LEVEL=info mocha -r ts-node/register 'src/tests/*.ts'",
-    "test-coverage": "nyc --reporter=text mocha -r ts-node/register 'src/tests/*.ts'",
+    "test-coverage": "nyc --reporter=html --reporter=text mocha -r ts-node/register 'src/tests/*.ts'",
     "lint": "eslint . --ext .ts && echo '✔  Your .js files look good.'"
   },
   "dependencies": {
