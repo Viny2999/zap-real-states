@@ -1,5 +1,5 @@
-import assert from 'assert';
 import { CacheService } from '../services';
+import assert from 'assert';
 
 const cacheService = new CacheService();
 
@@ -15,12 +15,12 @@ describe('Test Cache Service', () => {
     assert.equal(valueCached, value);
   });
 
-  it('Check Key Method: Should Receive False', () => {
+  it('Check Key: Should Receive False If No Exists', () => {
     const hasKey = cacheService.checkKey(key);
     assert.equal(hasKey, false);
   });
 
-  it('Check Key Method: Should Receive True', () => {
+  it('Check Key: Should Receive True If Exists', () => {
     cacheService.set(key, value);
     const hasKey = cacheService.checkKey(key);
     cacheService.deleteKey(key);

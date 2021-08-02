@@ -38,10 +38,6 @@ export class RealStateRepository {
     }
   }
 
-  private getKeyByDomain(domain: string): string {
-    return domain.includes('zap') ? cacheZapKey : cacheVivaRealKey;
-  }
-
   private paginateResponse(data: any, page: number, limit: number): any {
     const totalCount = data.length;
     const pageCount = Math.ceil(totalCount / limit);
@@ -102,63 +98,67 @@ export class RealStateRepository {
     });
   }
 
-  private getPrice(realState) {
+  public getKeyByDomain(domain: string): string {
+    return domain.includes('zap') ? cacheZapKey : cacheVivaRealKey;
+  }
+
+  public getPrice(realState) {
     return realState.pricingInfos.price;
   }
 
-  private getRentalTotalPrice(realState) {
+  public getRentalTotalPrice(realState) {
     return realState.pricingInfos.rentalTotalPrice;
   }
 
-  private getBusinessType(realState) {
+  public getBusinessType(realState) {
     return realState.pricingInfos.businessType;
   }
 
-  private getMonthlyCondoFee(realState) {
+  public getMonthlyCondoFee(realState) {
     return realState.pricingInfos.monthlyCondoFee;
   }
 
-  private getLocation(realState) {
+  public getLocation(realState) {
     return realState.address.geoLocation.location;
   }
 
-  private getM2(realState) {
+  public getM2(realState) {
     return realState.usableAreas;
   }
 
-  private checkLocationElegibility(location): boolean {
+  public checkLocationElegibility(location): boolean {
     return location.lon !== 0 && location.lat !== 0;
   }
 
-  private checkZapRentalEligibility(businessType, rentalTotalPrice): boolean {
+  public checkZapRentalEligibility(businessType, rentalTotalPrice): boolean {
     return businessType === 'RENTAL' && rentalTotalPrice >= 3500;
   }
 
-  private checkZapSaleEligibility(businessType, price): boolean {
+  public checkZapSaleEligibility(businessType, price): boolean {
     return businessType === 'SALE' && price >= 600000;
   }
 
-  private checkVivaRealRentalEligibility(businessType, rentalTotalPrice): boolean {
+  public checkVivaRealRentalEligibility(businessType, rentalTotalPrice): boolean {
     return businessType === 'RENTAL' && rentalTotalPrice <= 4000;
   }
 
-  private checkVivaRealSaleEligibility(businessType, price): boolean {
+  public checkVivaRealSaleEligibility(businessType, price): boolean {
     return businessType === 'SALE' && price <= 700000;
   }
 
-  private calculateM2Value(m2, price): number {
+  public calculateM2Value(m2, price): number {
     return price / m2;
   }
 
-  private checkM2Eligibility(m2, price): boolean {
+  public checkM2Eligibility(m2, price): boolean {
     return m2 === 0 ? false : this.calculateM2Value(m2, price) > 3500;
   }
 
-  private checkCondoEligibility(monthlyCondoFee, rentalTotalPrice): boolean {
+  public checkCondoEligibility(monthlyCondoFee, rentalTotalPrice): boolean {
     return monthlyCondoFee < (rentalTotalPrice * 0.3);
   }
 
-  private checkInBoundingBox(location): boolean {
+  public checkInBoundingBox(location): boolean {
     const minlon = -46.693419;
     const minlat = -23.568704;
     const maxlon = -46.641146;
@@ -167,13 +167,13 @@ export class RealStateRepository {
     return ((maxlon - minlon) >= location.lon && (maxlat - minlat) >= location.lat);
   }
 
-  private decreaseSaleValue(realState): number {
+  public decreaseSaleValue(realState): number {
     const price = this.getPrice(realState);
     realState.pricingInfos.price =  price - price * 0.1;
     return realState;
   }
 
-  private increaseRentalValue(realState): number {
+  public increaseRentalValue(realState): number {
     const rentalPrice = this.getRentalTotalPrice(realState);
     realState.pricingInfos.rentalTotalPrice = rentalPrice + rentalPrice * 0.5;
     return realState;
