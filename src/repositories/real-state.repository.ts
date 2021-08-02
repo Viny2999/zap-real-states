@@ -164,16 +164,16 @@ export class RealStateRepository {
     const maxlon = -46.641146;
     const maxlat = -23.546686;
 
-    return ((maxlon - minlon) >= location.lon && (maxlat - minlat) >= location.lat);
+    return ((location.lon >= minlon && location.lon <= maxlon) && (location.lat >= minlat && location.lat <= maxlat));
   }
 
-  public decreaseSaleValue(realState): number {
+  public decreaseSaleValue(realState) {
     const price = this.getPrice(realState);
     realState.pricingInfos.price =  price - price * 0.1;
     return realState;
   }
 
-  public increaseRentalValue(realState): number {
+  public increaseRentalValue(realState) {
     const rentalPrice = this.getRentalTotalPrice(realState);
     realState.pricingInfos.rentalTotalPrice = rentalPrice + rentalPrice * 0.5;
     return realState;
