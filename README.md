@@ -1,7 +1,7 @@
 # OLX Challenge
 ![Heroku](https://github.com/Viny2999/eng-zap-challenge-nodejs/actions/workflows/main.yml/badge.svg)
 
-API Develop with NodeJS and Typescript to solve Option B of OLX Challenge [described here.](https://olxbr.github.io/cultura/challenges/engineering.html)
+API Developed with NodeJS and Typescript to solve Option B of OLX Challenge [described here.](https://olxbr.github.io/cultura/challenges/engineering.html)
 
 ## Instructions to Run Locally
 There are two ways to run the application:
