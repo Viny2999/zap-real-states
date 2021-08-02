@@ -27,4 +27,8 @@ export class CacheService {
   public checkKey(key: string) {
     return this.cache.has(key);
   }
+
+  public deleteKey(key: string) {
+    return this.cache.del(key);
+  }
 }
