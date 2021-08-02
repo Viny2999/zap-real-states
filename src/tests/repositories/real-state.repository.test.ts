@@ -1,20 +1,74 @@
 import assert from 'assert';
-import { RealStateRepository } from '../repositories/real-state.repository';
+import { RealStateRepository } from '../../repositories/real-state.repository';
 
 const realStateRepository = new RealStateRepository();
 
 describe('Real State Repository Test', () => {
-  describe('Get Cache Key Test', () => {
-    it('Should Receive Zap', () => {
-      const cacheZapKey = 'zap-key';
-      const key = realStateRepository.getKeyByDomain('/zap');
-      assert.equal(key, cacheZapKey);
+  describe('Get Methods Test', () => {
+    const realState = {
+      usableAreas: 60,
+      pricingInfos: {
+        price: 10000,
+        rentalTotalPrice: 1000,
+        businessType: 'SALE',
+        monthlyCondoFee: 400
+      },
+      address: {
+        geoLocation: {
+          location: {
+            lat: -22.9322341,
+            lon: -43.1799606
+          }
+        }
+      }
+    }
+    it('Should Receive Price', () => {
+      const value = realStateRepository.getPrice(realState);
+      assert.equal(value, 10000);
     });
 
-    it('Should Receive Viva Real', () => {
-      const cacheVivaRealKey = 'viva-real-key';
-      const key = realStateRepository.getKeyByDomain('/vivareal');
-      assert.equal(key, cacheVivaRealKey);
+    it('Should Receive Rental Total Price', () => {
+      const value = realStateRepository.getRentalTotalPrice(realState);
+      assert.equal(value, 1000);
+    });
+
+    it('Should Receive Business Type', () => {
+      const value = realStateRepository.getBusinessType(realState);
+      assert.equal(value, 'SALE');
+    });
+
+    it('Should Receive Monthly Condo Fee', () => {
+      const value = realStateRepository.getMonthlyCondoFee(realState);
+      assert.equal(value, 400);
+    });
+
+    it('Should Receive Latitude and Longitude', () => {
+      const locationExpected =  {
+        lat: -22.9322341,
+        lon: -43.1799606
+      };
+
+      const value = realStateRepository.getLocation(realState);
+      assert.deepEqual(value, locationExpected);
+    });
+
+    it('Should Receive M² Value', () => {
+      const value = realStateRepository.getM2(realState);
+      assert.equal(value, 60);
+    });
+
+    describe('Get Cache Key Test', () => {
+      it('Should Receive Zap', () => {
+        const cacheZapKey = 'zap-key';
+        const key = realStateRepository.getKeyByDomain('/zap');
+        assert.equal(key, cacheZapKey);
+      });
+  
+      it('Should Receive Viva Real', () => {
+        const cacheVivaRealKey = 'viva-real-key';
+        const key = realStateRepository.getKeyByDomain('/vivareal');
+        assert.equal(key, cacheVivaRealKey);
+      });
     });
   });
 

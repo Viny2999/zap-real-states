@@ -1,4 +1,4 @@
-import { CacheService } from '../services';
+import { CacheService } from '../../services';
 import assert from 'assert';
 
 const cacheService = new CacheService();
