@@ -1,4 +1,4 @@
-# OLX Challenge
+# ZAP Real States
 ![Heroku](https://github.com/Viny2999/eng-zap-challenge-nodejs/actions/workflows/main.yml/badge.svg)
 
 API Developed with NodeJS and Typescript to solve Option B of OLX Challenge [described here.](https://olxbr.github.io/cultura/challenges/engineering.html)
